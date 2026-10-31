@@ -1,5 +1,5 @@
 const CACHE = "jeeb-shell-v1";
-const SHELL = ["./", "manifest.webmanifest", "icons/icon-192.png"];
+const SHELL = ["./", "manifest.webmanifest", "icon-192.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== CACHE).map(x => caches.delete(x))))); self.clients.claim(); });
 self.addEventListener("fetch", e => {
